@@ -1,10 +1,27 @@
 .practice {
   display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.category {
+  margin: 5px;
+  padding: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: darkblue;
+  display: grid;
   grid-template-rows: 1fr;
+  align-self: start;
 }
 
 .example {
   margin: 5px;
   padding: 5px;
   background-color: lightblue;
+}
+
+@media (max-width: 600px) {
+  .practice {
+    grid-template-columns: 1fr;
+  }
 }

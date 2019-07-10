@@ -82,79 +82,118 @@ let removeLastElementFromArray = (value) => {
 
 }
 
+let addItemToObject = (value) => {
+
+  value.fifth = 1000
+  return Object.entries(value).join();
+
+}
+
+let removeItemFromObject = (value) => {
+
+  delete value.first;
+  return Object.entries(value).join();
+
+}
+
 function App() {
 
   return (
     <div className="practice">
 
-      <div className="example">
+      <div className="category">
+        Recursion
+        <div className="example">
 
-          Factorial
-          <div>Value: 5</div>
-          <div>Answer: {factorial(5)}</div>
+            Factorial
+            <div>Value: 5</div>
+            <div>Answer: {factorial(5)}</div>
+        </div>
       </div>
 
-      <div className="example">
+      <div className="category">
+        Arrays
+        <div className="example">
 
-        Sort by largest in array:
-        <div>Value: ["We", "I", "Them", "You"]</div>
-        <div>Answer: {sortByAlphabeticalAscInArray(["We", "I", "Them", "You"])}</div>
+          Sort by largest in array:
+          <div>Value: ["We", "I", "Them", "You"]</div>
+          <div>Answer: {sortByAlphabeticalAscInArray(["We", "I", "Them", "You"])}</div>
+        </div>
+        
+        <div className="example">
+
+          Sort by smallest in array: 
+          <div>Value: ["We", "I", "Them", "You"]</div>
+          <div>Answer: {sortByAlphabeticalDscInArray(["We", "I", "Them", "You"])}</div>
+        </div>
+
+        <div className="example">
+
+          Sort array numbers smallest to largest: 
+          <div>Value: [10, 5, 100, 25]</div>
+          <div>Answer: {sortArrayNumbersSmallestToLargest([10, 5, 100, 25])}</div>
+        </div>
+
+        <div className="example">
+
+          Sort array numbers largest to smallest: 
+          <div>Value: [10, 5, 100, 25]</div>
+          <div>Answer: {sortArrayNumbersLargestToSmallest([10, 5, 100, 25])}</div>
+        </div>
+
+        <div className="example">
+
+          Iterate over array: 
+          <div>Value: [10, 5, 100, 25]</div>
+          <div>Answer: {iterateOverArray([10, 5, 100, 25])}</div>
+        </div>
+
+        <div className="example">
+
+          Add to beginning of array: 
+          <div>Value: [10, 5, 100, 25]</div>
+          <div>Answer: {addToBeginningOfArray([10, 5, 100, 25])}</div>
+        </div>
+
+        <div className="example">
+
+          Add to End of array: 
+          <div>Value: [10, 5, 100, 25]</div>
+          <div>Answer: {addToEndOfArray([10, 5, 100, 25])}</div>
+        </div>
+
+        <div className="example">
+
+          Remove first element from array: 
+          <div>Value: [10, 5, 100, 25]</div>
+          <div>Answer: {removeFirstElementFromArray([10, 5, 100, 25])}</div>
+        </div>
+
+        <div className="example">
+
+          Remove last element from array: 
+          <div>Value: [10, 5, 100, 25]</div>
+          <div>Answer: {removeLastElementFromArray([10, 5, 100, 25])}</div>
+        </div>
       </div>
-      
-      <div className="example">
 
-        Sort by smallest in array: 
-        <div>Value: ["We", "I", "Them", "You"]</div>
-        <div>Answer: {sortByAlphabeticalDscInArray(["We", "I", "Them", "You"])}</div>
-      </div>
+      <div className="category">
+        Objects:
 
-      <div className="example">
+        <div className="example">
 
-        Sort array numbers smallest to largest: 
-        <div>Value: [10, 5, 100, 25]</div>
-        <div>Answer: {sortArrayNumbersSmallestToLargest([10, 5, 100, 25])}</div>
-      </div>
+          Add element to object: 
+          <div>Value: {"{'first': 10, 'second': 5, 'third' : 100, 'fourth': 25}"}</div>
+          <div>Answer: {addItemToObject({'first': 10, 'second': 5, 'third' : 100, 'fourth': 25})}</div>
+        </div>
 
-      <div className="example">
+        <div className="example">
 
-        Sort array numbers largest to smallest: 
-        <div>Value: [10, 5, 100, 25]</div>
-        <div>Answer: {sortArrayNumbersLargestToSmallest([10, 5, 100, 25])}</div>
-      </div>
+          Remove last element from object: 
+          <div>Value: {"{'first': 10, 'second': 5, 'third' : 100, 'fourth': 25}"}</div>
+          <div>Answer: {removeItemFromObject({'first': 10, 'second': 5, 'third' : 100, 'fourth': 25})}</div>
+        </div>
 
-      <div className="example">
-
-        Iterate over array: 
-        <div>Value: [10, 5, 100, 25]</div>
-        <div>Answer: {iterateOverArray([10, 5, 100, 25])}</div>
-      </div>
-
-      <div className="example">
-
-        Add to beginning of array: 
-        <div>Value: [10, 5, 100, 25]</div>
-        <div>Answer: {addToBeginningOfArray([10, 5, 100, 25])}</div>
-      </div>
-
-      <div className="example">
-
-        Add to End of array: 
-        <div>Value: [10, 5, 100, 25]</div>
-        <div>Answer: {addToEndOfArray([10, 5, 100, 25])}</div>
-      </div>
-
-      <div className="example">
-
-        Remove first element from array: 
-        <div>Value: [10, 5, 100, 25]</div>
-        <div>Answer: {removeFirstElementFromArray([10, 5, 100, 25])}</div>
-      </div>
-
-      <div className="example">
-
-        Remove last element from array: 
-        <div>Value: [10, 5, 100, 25]</div>
-        <div>Answer: {removeLastElementFromArray([10, 5, 100, 25])}</div>
       </div>
     </div>
   );
