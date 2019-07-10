@@ -7,6 +7,39 @@ let parseString = (value) => {
 
 }
 
+let reverseString = (value) => {
+
+  let stringArray = value.split("");
+  console.log(stringArray);
+  return stringArray.reverse().join("");
+
+}
+
+let findMostFrequentCharacter = (value) => {
+
+  let characterCounts = {}
+  let maxKey = ''
+  for(let i = 0; i < value.length; i++) {
+
+    let key = value[i];
+    if (characterCounts.hasOwnProperty(value[i])) {
+      characterCounts[key]++;
+    } else {
+      characterCounts[key] = 1;
+    }
+
+    if (maxKey === '' || characterCounts[key] > characterCounts[maxKey]) {
+      maxKey = key;
+    }
+
+  }
+
+  console.log(characterCounts);
+
+  return maxKey;
+
+}
+
 let factorial = (value) => {
 
   if (value === 0) {
@@ -17,11 +50,11 @@ let factorial = (value) => {
 
 }
 
-let reverseString = (value) => {
+let reverseStringRecursive = (value) => {
 
   if (value === '') return '';
 
-  return reverseString(value.substr(1)) + value[0];
+  return reverseStringRecursive(value.substr(1)) + value[0];
 
 }
 
@@ -93,6 +126,12 @@ let removeLastElementFromArray = (value) => {
 
   value.pop();
   return value.join();
+
+}
+
+let findLongestStringInArray = (value) => {
+
+
 
 }
 
@@ -169,6 +208,37 @@ export default class App extends Component {
               </div>
               }
           </div>
+
+          <div className="example">
+
+          Reverse String
+          <div>Value: 'hello'</div>
+          <div>Answer: {reverseString('hello')}</div>
+
+            {this.state.showCodeBasics &&
+              <div className="code">
+                <div>Code:</div>
+                <code>{reverseString.toString()}</code>
+              </div>
+            }
+
+          </div>
+
+          <div className="example">
+
+          Find most frequent character in string
+          <div>Value: 'hello'</div>
+          <div>Answer: {findMostFrequentCharacter('hello')}</div>
+
+            {this.state.showCodeBasics &&
+              <div className="code">
+                <div>Code:</div>
+                <code>{findMostFrequentCharacter.toString()}</code>
+              </div>
+            }
+
+          </div>
+
           <div className="button">
               <button onClick={(e) => this.clickHandler('Basics')}>Show/Hide Code</button>
           </div>
@@ -194,12 +264,12 @@ export default class App extends Component {
 
             Reverse a string
             <div>Value: 'hello'</div>
-            <div>Answer: {reverseString('hello')}</div>
+            <div>Answer: {reverseStringRecursive('hello')}</div>
 
               {this.state.showCodeRecursion &&
                 <div className="code">
                   <div>Code:</div>
-                  <code>{reverseString.toString()}</code>
+                  <code>{reverseStringRecursive.toString()}</code>
                 </div>
               }
             </div>
@@ -212,7 +282,7 @@ export default class App extends Component {
           Arrays
           <div className="example">
 
-            Sort by largest in array:
+            Sort by alphabetical Asc:
             <div>Value: ["We", "I", "Them", "You"]</div>
             <div>Answer: {sortByAlphabeticalAscInArray(["We", "I", "Them", "You"])}</div>
             {this.state.showCodeArrays &&
@@ -226,7 +296,7 @@ export default class App extends Component {
           
           <div className="example">
 
-            Sort by smallest in array: 
+            Sort by alphabetical Dsc: 
             <div>Value: ["We", "I", "Them", "You"]</div>
             <div>Answer: {sortByAlphabeticalDscInArray(["We", "I", "Them", "You"])}</div>
 
