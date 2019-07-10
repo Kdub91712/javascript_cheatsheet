@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
 import './App.css';
 
+let parseString = (value) => {
+
+  return value.substring(1);
+
+}
+
 let factorial = (value) => {
 
   if (value === 0) {
@@ -8,6 +14,14 @@ let factorial = (value) => {
   }
 
   return value * factorial(value - 1);
+
+}
+
+let reverseString = (value) => {
+
+  if (value === '') return '';
+
+  return reverseString(value.substr(1)) + value[0];
 
 }
 
@@ -114,7 +128,10 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showCode: false
+      showCodeBasics: false,
+      showCodeRecurion: false,
+      showCodeArrays: false,
+      showCodeObjects: false
     }
 
   }
@@ -123,15 +140,39 @@ export default class App extends Component {
 
   }
 
-  clickHandler = () => {
+  clickHandler = (type) => {
+
+    let stateType = 'showCode' + type
+    console.log(stateType)
     this.setState({
-      showCode: !this.state.showCode
+      [stateType]: !this.state[stateType]
     })
   }
 
   render() {
     return (
       <div className="practice">
+
+        <div className="category">
+          Basics
+
+          <div className="example">
+
+              Parse String
+              <div>Value: 'hello'</div>
+              <div>Answer: {parseString('hello')}</div>
+
+              {this.state.showCodeBasics &&
+                <div className="code">
+                <div>Code:</div>
+                <code>{parseString.toString()}</code>
+              </div>
+              }
+          </div>
+          <div className="button">
+              <button onClick={(e) => this.clickHandler('Basics')}>Show/Hide Code</button>
+          </div>
+        </div>
 
         <div className="category">
           Recursion
@@ -141,12 +182,29 @@ export default class App extends Component {
               <div>Value: 5</div>
               <div>Answer: {factorial(5)}</div>
 
-              {this.state.showCode &&
+              {this.state.showCodeRecursion &&
                 <div className="code">
                 <div>Code:</div>
                 <code>{factorial.toString()}</code>
               </div>
-            }
+              }
+          </div>
+
+          <div className="example">
+
+            Reverse a string
+            <div>Value: 'hello'</div>
+            <div>Answer: {reverseString('hello')}</div>
+
+              {this.state.showCodeRecursion &&
+                <div className="code">
+                  <div>Code:</div>
+                  <code>{reverseString.toString()}</code>
+                </div>
+              }
+            </div>
+            <div className="button">
+              <button onClick={(e) => this.clickHandler('Recursion')}>Show/Hide Code</button>
           </div>
         </div>
 
@@ -157,7 +215,7 @@ export default class App extends Component {
             Sort by largest in array:
             <div>Value: ["We", "I", "Them", "You"]</div>
             <div>Answer: {sortByAlphabeticalAscInArray(["We", "I", "Them", "You"])}</div>
-            {this.state.showCode &&
+            {this.state.showCodeArrays &&
                 <div className="code">
                 <div>Code:</div>
                 <code>{sortByAlphabeticalAscInArray.toString()}</code>
@@ -172,7 +230,7 @@ export default class App extends Component {
             <div>Value: ["We", "I", "Them", "You"]</div>
             <div>Answer: {sortByAlphabeticalDscInArray(["We", "I", "Them", "You"])}</div>
 
-            {this.state.showCode &&
+            {this.state.showCodeArrays &&
                 <div className="code">
                 <div>Code:</div>
                 <code>{sortByAlphabeticalDscInArray.toString()}</code>
@@ -186,7 +244,7 @@ export default class App extends Component {
             <div>Value: [10, 5, 100, 25]</div>
             <div>Answer: {sortArrayNumbersSmallestToLargest([10, 5, 100, 25])}</div>
 
-            {this.state.showCode &&
+            {this.state.showCodeArrays &&
                 <div className="code">
                 <div>Code:</div>
                 <code>{sortArrayNumbersSmallestToLargest.toString()}</code>
@@ -200,7 +258,7 @@ export default class App extends Component {
             <div>Value: [10, 5, 100, 25]</div>
             <div>Answer: {sortArrayNumbersLargestToSmallest([10, 5, 100, 25])}</div>
 
-            {this.state.showCode &&
+            {this.state.showCodeArrays &&
                 <div className="code">
                 <div>Code:</div>
                 <code>{sortArrayNumbersLargestToSmallest.toString()}</code>
@@ -214,7 +272,7 @@ export default class App extends Component {
             <div>Value: [10, 5, 100, 25]</div>
             <div>Answer: {iterateOverArray([10, 5, 100, 25])}</div>
 
-            {this.state.showCode &&
+            {this.state.showCodeArrays &&
                 <div className="code">
                 <div>Code:</div>
                 <code>{iterateOverArray.toString()}</code>
@@ -228,7 +286,7 @@ export default class App extends Component {
             <div>Value: [10, 5, 100, 25]</div>
             <div>Answer: {addToBeginningOfArray([10, 5, 100, 25])}</div>
 
-            {this.state.showCode &&
+            {this.state.showCodeArrays &&
                 <div className="code">
                 <div>Code:</div>
                 <code>{addToBeginningOfArray.toString()}</code>
@@ -242,7 +300,7 @@ export default class App extends Component {
             <div>Value: [10, 5, 100, 25]</div>
             <div>Answer: {addToEndOfArray([10, 5, 100, 25])}</div>
 
-            {this.state.showCode &&
+            {this.state.showCodeArrays &&
               <div className="code">
                 <div>Code:</div>
                 <code>{addToEndOfArray.toString()}</code>
@@ -255,7 +313,7 @@ export default class App extends Component {
             <div>Value: [10, 5, 100, 25]</div>
             <div>Answer: {removeFirstElementFromArray([10, 5, 100, 25])}</div>
 
-            {this.state.showCode &&
+            {this.state.showCodeArrays &&
               <div className="code">
               <div>Code:</div>
               <code>{removeFirstElementFromArray.toString()}</code>
@@ -269,12 +327,15 @@ export default class App extends Component {
             <div>Value: [10, 5, 100, 25]</div>
             <div>Answer: {removeLastElementFromArray([10, 5, 100, 25])}</div>
 
-            {this.state.showCode &&
+            {this.state.showCodeArrays &&
                 <div className="code">
                 <div>Code:</div>
                 <code>{removeLastElementFromArray.toString()}</code>
               </div>
             }
+          </div>
+          <div className="button">
+              <button onClick={(e) => this.clickHandler('Arrays')}>Show/Hide Code</button>
           </div>
         </div>
 
@@ -287,7 +348,7 @@ export default class App extends Component {
             <div>Value: {"{'first': 10, 'second': 5, 'third' : 100, 'fourth': 25}"}</div>
             <div>Answer: {addItemToObject({'first': 10, 'second': 5, 'third' : 100, 'fourth': 25})}</div>
 
-            {this.state.showCode &&
+            {this.state.showCodeObjects &&
               <div className="code">
               <div>Code:</div>
               <code>{addItemToObject.toString()}</code>
@@ -302,7 +363,7 @@ export default class App extends Component {
             <div>Value: {"{'first': 10, 'second': 5, 'third' : 100, 'fourth': 25}"}</div>
             <div>Answer: {removeItemFromObject({'first': 10, 'second': 5, 'third' : 100, 'fourth': 25})}</div>
 
-            {this.state.showCode &&
+            {this.state.showCodeObjects &&
               <div className="code">
               <div>Code:</div>
               <code>{removeItemFromObject.toString()}</code>
@@ -316,18 +377,19 @@ export default class App extends Component {
             <div>Value: {"{'first': 10, 'second': 5, 'third' : 100, 'fourth': 25}"}</div>
             <div>Answer: {iterateOverObject({'first': 10, 'second': 5, 'third' : 100, 'fourth': 25})}</div>
 
-            {this.state.showCode &&
+            {this.state.showCodeObjects &&
               <div className="code">
               <div>Code:</div>
               <code>{iterateOverObject.toString()}</code>
               </div>
             }
+
           </div>
 
-        </div>
+          <div className="button">
+              <button onClick={(e) => this.clickHandler('Objects')}>Show/Hide Code</button>
+          </div>
 
-        <div class="category">
-            <button onClick={this.clickHandler}>Show/Hide Code</button>
         </div>
       </div>
     );
